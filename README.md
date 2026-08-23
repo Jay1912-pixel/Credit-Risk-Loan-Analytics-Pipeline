@@ -145,7 +145,7 @@ Analyzed relationships between borrower characteristics and loan outcomes, inclu
 
 # 🔄 End-to-End Data Pipeline
 
-```
+```<https://github.com/Jay1912-pixel/Credit-Risk-Loan-Analytics-Pipeline>
 Raw Lending Club CSV
         ↓
      Python
