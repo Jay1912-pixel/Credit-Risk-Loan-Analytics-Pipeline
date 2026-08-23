@@ -1,42 +1,167 @@
-# 🏦 Automated Credit Risk & Loan Portfolio Analytics Pipeline
+🏦 Automated Credit Risk & Loan Portfolio Analytics Pipeline
 
+📌 Project Overview
 
- 📌 Project Overview
-This project is an end-to-end automated data analytics pipeline designed to evaluate credit risk and manage a large-scale loan portfolio. It automates the extraction, transformation, and loading (ETL) of financial data, culminating in a dynamic, enterprise-grade Power BI dashboard for executive decision-making.
+This project is an end-to-end automated data analytics pipeline designed to evaluate credit risk and analyze a large-scale loan portfolio.
 
-The project demonstrates a complete data engineering and analytics workflow: moving from raw CSV data to actionable business intelligence using **Python, MySQL, and Power BI**.
+The pipeline automates the extraction, transformation, and loading (ETL) of financial data and delivers an interactive Power BI dashboard for analyzing loan portfolio performance and credit risk.
 
- 🗄️ Data Source & Privacy Note
-The dataset used for this project is the **Lending Club Loan Data (2007-2018)**, comprising hundreds of thousands of financial records. 
+The project demonstrates a complete analytics workflow, from raw financial data to actionable business insights using **Python, MySQL, and Power BI**.
 
-*Note: Due to GitHub's file size limits and enterprise data privacy best practices, the raw CSV dataset is not uploaded to this repository. You can access the original public dataset directly from [Kaggle](https://www.kaggle.com/datasets/wordsforthewise/lending-club).*
+---
+
+🗄️ Data Source & Privacy Note
+
+The dataset used in this project is the **Lending Club Loan Data (2007–2018)**.
+
+The original dataset contains hundreds of thousands of financial records.
+
+> **Note:** The raw CSV dataset is not included in this repository due to GitHub file-size limitations. The dataset can be obtained from the original public source on Kaggle:
+> https://www.kaggle.com/datasets/wordsforthewise/lending-club
+
+---
 
  🛠️ Tech Stack & Tools
-*   **Data Extraction & Transformation:** Python (Pandas)
-*   **Database Management & Loading:** MySQL, SQLAlchemy, PyMySQL
-*   **Business Intelligence & Visualization:** Power BI (DirectQuery mode)
-*   **Workflow Automation:** Windows Task Scheduler / Python Scripts
+
+| Category | Tools |
+|---|---|
+| Data Extraction & Transformation | Python, Pandas |
+| Database Management | MySQL |
+| Database Connectivity | SQLAlchemy, PyMySQL |
+| Business Intelligence | Power BI |
+| Data Visualization | Power BI |
+| Workflow Automation | Windows Task Scheduler, Python Scripts |
+
+---
 
  🚀 Key Features & Automation
-*   **Automated Python ETL Pipeline:** Developed a highly optimized Python script to process a massive dataset. Utilized `chunking` and `usecols` to prevent memory overload, successfully processing and cleaning ~400k records in under 20 seconds.
-*   **Custom Feature Engineering:** Implemented programmatic business logic in Python to classify borrowers into `High`, `Medium`, and `Low` risk categories based on their Debt-to-Income (DTI) ratio and Annual Income.
-*   **Seamless Database Integration:** Automated the data loading process directly into a local MySQL database using SQLAlchemy, ensuring the data is structured and ready for enterprise querying.
-*   **Live Power BI Connection:** Connected Power BI to the MySQL database via **DirectQuery**, allowing the dashboard to reflect real-time changes and updates without any manual data refreshes.
-*   **Enterprise-Grade Dashboarding:** Re-engineered a premium "Dark Ruby" executive template into a focused financial dashboard highlighting critical risk KPIs.
+
+### 1. Automated Python ETL Pipeline
+
+Developed an optimized Python ETL pipeline using **Pandas** to process approximately **400k loan records** efficiently.
+
+The pipeline uses:
+
+- `chunking` to process data in manageable batches
+- `usecols` to load only required columns
+- Data cleaning and transformation
+- Automated feature engineering
+
+These techniques help reduce memory consumption and improve processing performance.
+
+---
+
+ 2. Custom Risk Feature Engineering
+
+Implemented business rules in Python to classify borrowers into:
+
+- 🟢 **Low Risk**
+- 🟡 **Medium Risk**
+- 🔴 **High Risk**
+
+The risk classification is based on borrower financial characteristics such as:
+
+- Debt-to-Income (DTI) ratio
+- Annual income
+
+This feature allows the portfolio to be analyzed across different borrower risk segments.
+
+---
+
+ 3. MySQL Database Integration
+
+The transformed dataset is automatically loaded into a **MySQL database** using:
+
+- SQLAlchemy
+- PyMySQL
+
+This creates a structured database layer that can be queried for further analysis and reporting.
+
+---
+
+ 4. Power BI DirectQuery Integration
+
+Power BI is connected to the MySQL database using **DirectQuery**.
+
+This allows Power BI reports to query the underlying database directly instead of importing the complete dataset into the Power BI model.
+
+The setup reduces the need for traditional data-import refreshes when querying updated database data.
+
+---
+
+ 5. Interactive Financial Risk Dashboard
+
+Built an executive-style Power BI dashboard focused on:
+
+- Loan portfolio performance
+- Default risk
+- Borrower segmentation
+- Credit grade analysis
+- Loan purpose analysis
+- Financial risk indicators
+
+The dashboard enables users to interactively filter and explore portfolio performance.
+
+---
 
  📊 Core Business Metrics Analyzed
-1.  **Total Value at Risk (TVaR):** The total monetary value of loans that have defaulted or charged off.
-2.  **Overall Default Rate:** The percentage of the loan portfolio that has failed to repay.
-3.  **Risk Segmentation:** Analyzing default rates across varying credit grades (A-G) and loan purposes.
-4.  **Borrower Profiling:** Understanding the correlation between annual income, debt-to-income (DTI), home ownership, and loan default probability.
 
- 📁 Repository Structure
-*   `etl_pipeline.py`: The Python script responsible for data extraction, cleaning, custom risk categorization, and MySQL database loading.
-*   `Dashboard.pbix`: The final interactive Power BI dashboard file.
-*   `Dashboard_Preview.png`: High-resolution screenshot of the Power BI dashboard.
+ 1. Defaulted Loan Value
 
-💡 How to Run the Pipeline
-1. Clone this repository to your local machine.
-2. Ensure MySQL is running locally and update the database connection string in the Python script.
-3. Run the ETL pipeline: `python etl_pipeline.py`
-4. Open the Power BI file, refresh the DirectQuery connection, and view the updated metrics.
+Total monetary value of loans classified as **defaulted or charged off**.
+
+---
+
+2. Overall Default Rate
+
+Percentage of loans classified as **defaulted or charged off** within the analyzed loan portfolio.
+
+---
+
+ 3. Risk Segmentation
+
+Analyzed loan performance and default rates across:
+
+- Borrower risk categories
+- Credit grades (A–G)
+- Loan purposes
+
+This helps identify segments with relatively higher or lower default risk.
+
+---
+
+4. Borrower Profiling
+
+Analyzed relationships between borrower characteristics and loan outcomes, including:
+
+- Annual income
+- Debt-to-Income (DTI) ratio
+- Home ownership
+- Credit grade
+- Loan purpose
+- Default status
+
+---
+
+# 🔄 End-to-End Data Pipeline
+
+```
+Raw Lending Club CSV
+        ↓
+     Python
+     Pandas
+        ↓
+Data Cleaning & Transformation
+        ↓
+Feature Engineering
+        ↓
+Risk Classification
+        ↓
+      MySQL
+        ↓
+    Power BI
+   DirectQuery
+        ↓
+Interactive Risk Dashboard
+        ↓
+Business Insights
